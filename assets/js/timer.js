@@ -4,7 +4,7 @@ let btn_stop_timer = document.querySelector('#btn_stop_timer');
 let btn_restart_timer = document.querySelector('#btn_restart_timer');
 let btn_continue_timer = document.querySelector('#btn_continue_timer');
 // elemento com o cronometro
-let timer_display = document.querySelector('#timer');
+let timer_display = document.querySelector('#timer_count');
 
 let timer;
 

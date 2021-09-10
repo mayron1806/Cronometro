@@ -17,7 +17,7 @@ h1{
 /*
 ******Formatação principal************
 */
-main{
+#main{
     position: absolute;
     top: 50%;
     left: 50%;
