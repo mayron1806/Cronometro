@@ -1,63 +1,64 @@
-// botoes
-let botao_iniciar = document.getElementById('botao_iniciar');
-let botao_parar = document.getElementById('botao_parar');
-let botao_reiniciar = document.getElementById('botao_reiniciar');
-let botao_continuar = document.getElementById('botao_continuar');
+// botões
+let btn_start_timer = document.querySelector('#btn_start_timer');
+let btn_stop_timer = document.querySelector('#btn_stop_timer');
+let btn_restart_timer = document.querySelector('#btn_restart_timer');
+let btn_continue_timer = document.querySelector('#btn_continue_timer');
+// elemento com o cronometro
+let timer_display = document.querySelector('#timer');
 
-// h1 com o cronometro
-let h1_cronometro = document.getElementById('cronometro');
+// valores do cronometro 
+let mili_second = 0;
+let seconds = 0;
+let minutes = 0;
 
-// 
-let cronometro;
+// ativa o botao de iniciar no comeco da aplicação
+buttonDisplayController(btn_start_timer)
 
-// cronometro 
-let mili_segundos = 0;
-let segundos = 0;
-let minutos = 0;
-
-const Cronometro = {
-    Iniciar : ()=> {
-        console.log('iniciando')
-        cronometro = setInterval(()=>{
-            mili_segundos++;
-            if(mili_segundos === 10){
-                segundos++;
-                mili_segundos = 0;
-                if(segundos ===  60){
-                    minutos++;
-                    segundos = 0;
+const TimerFeatures = {
+    Start : ()=>{
+        timer = setInterval(()=>{
+            mili_second++;
+            if(mili_second === 10){
+                seconds++;
+                mili_second = 0;
+                if(seconds ===  60){
+                    minutes++;
+                    seconds = 0;
                 }
             }
-            h1_cronometro.innerHTML = ("00" + minutos).slice(-2) + ':' + ("00" + segundos).slice(-2) + ':' + ("00" + mili_segundos).slice(-2);
+            timer_display.innerHTML = ("00" + minutes).slice(-2) + ':' + ("00" + seconds).slice(-2) + ':' + ("00" + mili_second).slice(-2);
         }, 100)
+        buttonDisplayController(btn_stop_timer, btn_restart_timer);
     },
-    Parar : () => {
-        console.log('parando')
-        clearInterval(cronometro);
+    Stop : () =>{
+        clearInterval(timer);
+        buttonDisplayController(btn_continue_timer, btn_restart_timer)
     },
-    Reiniciar : () => {
-        console.log('reiniciando')
-        clearInterval(cronometro);
+    Restart : () => {
+        clearInterval(timer);
         mili_segundos = segundos = minutos = 0;
-        h1_cronometro.innerHTML = ("00" + minutos).slice(-2) + ':' + ("00" + segundos).slice(-2) + ':' + ("00" + mili_segundos).slice(-2);
+        timer_display.innerHTML = ("00" + minutos).slice(-2) + ':' + ("00" + segundos).slice(-2) + ':' + ("00" + mili_segundos).slice(-2);
+        buttonDisplayController(btn_start_timer)
     },
-    Continuar : () => {
-        console.log('continuando')
-        Cronometro['Iniciar']()
+    Continue : () => {
+        TimerFeatures['Start']()
     }
 }
 
-function clicarBotao(botao){
-    Cronometro[botao.className]()
+// le o borao que foi clicado
+function clickBtn(button_clicked){
+    TimerFeatures[button_clicked.value]()
 }
-function ativarOuDesatvarBotoes(){
-    botao_iniciar.style.display = "none";
-    botao_parar.style.display = "none";
-    botao_reiniciar.style.display = "none";
-    botao_continuar.style.display = "none";
+
+// ativa e desativa os botoes
+function buttonDisplayController(){
+    btn_start_timer.style.display = "none";
+    btn_stop_timer.style.display = "none";
+    btn_restart_timer.style.display = "none";
+    btn_continue_timer.style.display = "none";
 
     // ativa os botoes necessarios
-    for(var botao in arguments){
-        arguments[botao].style.display = "block";
+    for(let button in arguments){
+        arguments[button].style.display = "block";
     }
 }

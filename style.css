@@ -25,30 +25,30 @@ main{
     padding: 30px;
     background-color: rgb(100, 128, 250);
 }
-#botoes{
+#buttons{
     display: flex;
     justify-content: center;
 }
-.Iniciar, .Reiniciar, .Parar, .Continuar{
+.Start, .Restart, .Stop, .Continue{
     background-color: white;
     padding: 5px;
     margin: 10px;
     border: 0;
     border-radius: 5px;
 }
-.Iniciar:hover{
+.Start:hover{
     cursor: pointer;
     background: linear-gradient(45deg, rgb(105, 255, 105), rgb(0, 255, 0));
 }
-.Reiniciar:hover{
+.Restart:hover{
     cursor: pointer;
     background: linear-gradient(45deg, rgb(79, 105, 255), rgb(0, 60, 255));   
 }
-.Parar:hover{
+.Stop:hover{
     cursor: pointer;
     background: linear-gradient(45deg, rgb(255, 107, 107), red);
 }
-.Continuar:hover{
+.Continue:hover{
     cursor: pointer;
     background: linear-gradient(45deg, rgb(105, 255, 105), rgb(0, 255, 0));
 }
