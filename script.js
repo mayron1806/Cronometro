@@ -6,6 +6,8 @@ let btn_continue_timer = document.querySelector('#btn_continue_timer');
 // elemento com o cronometro
 let timer_display = document.querySelector('#timer');
 
+let timer;
+
 // valores do cronometro 
 let mili_second = 0;
 let seconds = 0;
