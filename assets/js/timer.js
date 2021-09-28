@@ -3,15 +3,14 @@ let btn_start_timer = document.querySelector('#btn_start_timer');
 let btn_stop_timer = document.querySelector('#btn_stop_timer');
 let btn_restart_timer = document.querySelector('#btn_restart_timer');
 let btn_continue_timer = document.querySelector('#btn_continue_timer');
-// elemento com o cronometro
-let timer_display = document.querySelector('#timer_count');
+
 
 let timer;
 
 // valores do cronometro 
-let mili_second = 0;
-let seconds = 0;
-let minutes = 0;
+let mili_sec = 0;
+let sec = 0;
+let min = 0;
 
 // ativa o botao de iniciar no comeco da aplicação
 buttonDisplayController(btn_start_timer)
@@ -19,16 +18,16 @@ buttonDisplayController(btn_start_timer)
 const TimerFeatures = {
     Start : ()=>{
         timer = setInterval(()=>{
-            mili_second++;
-            if(mili_second === 10){
-                seconds++;
-                mili_second = 0;
-                if(seconds ===  60){
-                    minutes++;
-                    seconds = 0;
+            mili_sec++;
+            if(mili_sec === 10){
+                sec++;
+                mili_sec = 0;
+                if(sec ===  60){
+                    min++;
+                    sec = 0;
                 }
             }
-            timer_display.innerHTML = ("00" + minutes).slice(-2) + ':' + ("00" + seconds).slice(-2) + ':' + ("00" + mili_second).slice(-2);
+            displayTime(min, sec, mili_sec)
         }, 100)
         buttonDisplayController(btn_stop_timer, btn_restart_timer);
     },
@@ -38,8 +37,7 @@ const TimerFeatures = {
     },
     Restart : () => {
         clearInterval(timer);
-        mili_segundos = segundos = minutos = 0;
-        timer_display.innerHTML = ("00" + minutos).slice(-2) + ':' + ("00" + segundos).slice(-2) + ':' + ("00" + mili_segundos).slice(-2);
+        mili_sec = sec = min = 0;
         buttonDisplayController(btn_start_timer)
     },
     Continue : () => {
@@ -63,4 +61,11 @@ function buttonDisplayController(){
     for(let button in arguments){
         arguments[button].style.display = "block";
     }
+}
+
+// mostra o tempo na tela
+function displayTime(min,sec, m_sec){
+    // elemento com o cronometro
+    let timer_display = document.querySelector('#timer_count');
+    timer_display.innerHTML = ("00" + min).slice(-2) + ':' + ("00" + sec).slice(-2) + ':' + ("00" + m_sec).slice(-2);
 }
