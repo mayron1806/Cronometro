@@ -1,4 +1,6 @@
 # Cronometro
+## Site ao vivo
+Link: https://mayron1806.github.io/Cronometro/
 ## O que é?
 É um projeto pequeno com 2 funcionalidades, são elas:
 - Timer
