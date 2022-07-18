@@ -5,6 +5,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    outline: none;
 }
 body{
     background-color: rgb(68, 102, 255);
@@ -12,6 +13,7 @@ body{
 }
 h1{
     padding: 20px;
+    color: white;
 }
 
 /*
@@ -27,28 +29,48 @@ h1{
 }
 #buttons{
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
 }
-.Start, .Restart, .Stop, .Continue{
+.button{
+    color: rgb(100, 128, 250);
+    text-decoration: none;
     background-color: white;
+    font-weight: 600;
+    transition: 0.3s;
     padding: 5px;
-    margin: 10px;
     border: 0;
     border-radius: 5px;
+    cursor: pointer;
+}
+.back{
+    display: block;
+    text-align: center;
+    width: 100%;
+}
+.button:hover{
+    transform: scale(1.1);
 }
 .Start:hover{
-    cursor: pointer;
     background: linear-gradient(45deg, rgb(105, 255, 105), rgb(0, 255, 0));
 }
 .Restart:hover{
-    cursor: pointer;
     background: linear-gradient(45deg, rgb(79, 105, 255), rgb(0, 60, 255));   
 }
 .Stop:hover{
-    cursor: pointer;
     background: linear-gradient(45deg, rgb(255, 107, 107), red);
 }
 .Continue:hover{
-    cursor: pointer;
     background: linear-gradient(45deg, rgb(105, 255, 105), rgb(0, 255, 0));
+}
+.inputs{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+.inputs input{
+    padding: 5px;
+    border: 0;
+    border-radius: 5px;
 }
